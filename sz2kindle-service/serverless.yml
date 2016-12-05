@@ -1,0 +1,37 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: sz2kindle-service
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  stage: dev
+  region: eu-west-1
+
+functions:
+
+  sz2kindle:
+    handler: handler.sz2kindle
+    events:
+      - schedule:
+          rate: cron(10 23 ? * SUN-FRI *)
+          enabled: true
+          input:
+            sz_username : ${file(settings.yml):sz_username}
+            sz_password : ${file(settings.yml):sz_password}
+            smtp_url : ${file(settings.yml):smtp_url}
+            email_from : ${file(settings.yml):email_from}
+            email_to : ${file(settings.yml):email_to}
+            stageParams:
+              stage: dev

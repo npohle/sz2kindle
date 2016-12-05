@@ -1,0 +1,5 @@
+sz_username : szreader@gmail.com
+sz_password : secret
+smtp_url : smtps://user:pass@email-smtp.us-east-1.amazonaws.com
+email_from : deliveryservice@makerspots.com
+email_to : me@gmail.com

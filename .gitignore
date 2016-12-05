@@ -1,0 +1,5 @@
+node_modules/
+.serverless/
+event.json
+settings.yml
+set-aws-keys.bat
